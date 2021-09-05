@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 //Route::group(['prefix'=>'v1'],function (){
 //   Route::get('/',function(){
 //       $data = \App\Models\Product::all();
@@ -26,10 +26,11 @@ use Illuminate\Support\Facades\Route;
 //       ]);
 //   }) ;
 //});
-Route::get('/',function(){
-    $data = \App\Models\Product::find(4)->reviews;
-    return response()->json([
-        'data'=>$data,
-        'message' => true
-    ]);
-}) ;
+//Route::get('/',function(){
+//    $data = \App\Models\Product::find(4)->reviews;
+//    return response()->json([
+//        'data'=>$data,
+//        'message' => true
+//    ]);
+//}) ;
+Route::apiResource('/products',\App\Http\Controllers\ProductController::class);
